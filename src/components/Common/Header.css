@@ -1,0 +1,14 @@
+.nav-link {
+    color: black
+}
+.fs-2{
+    fontWeight : "600"
+}
+.btn{
+    background-color: #3026d9;
+    color: #ffffff;
+}
+.btn:hover{
+    background-color: #404040;
+    color: #ffffff;
+}
