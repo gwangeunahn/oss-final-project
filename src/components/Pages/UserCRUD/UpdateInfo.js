@@ -19,7 +19,7 @@ export default function UpdateInfo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://672c26ca1600dda5a9f76967.mockapi.io/api/v1/Students/'+id);
+        const response = await axios.get('https://672c26ca1600dda5a9f76967.mockapi.io/api/v1/Students/' + id);
         const { studentNumber, password, ...semesters } = response.data;
 
         setStudentNumber(studentNumber);
@@ -63,11 +63,7 @@ export default function UpdateInfo() {
 
   const handleAddRow = (year, semester) => {
     setData((prevData) => ({
-      ...prevData,
-      [year]: {
-        ...prevData[year],
-        [semester]: [...prevData[year][semester], { subject: '', grade: '' }],
-      },
+      ...prevData, [year]: {...prevData[year], [semester]: [...prevData[year][semester], { subject: '', grade: '' }], },
     }));
   };
 
@@ -77,11 +73,7 @@ export default function UpdateInfo() {
       updatedSemester[index][field] = value;
 
       return {
-        ...prevData,
-        [year]: {
-          ...prevData[year],
-          [semester]: updatedSemester,
-        },
+        ...prevData, [year]: {...prevData[year], [semester]: updatedSemester, },
       };
     });
   };
@@ -90,14 +82,7 @@ export default function UpdateInfo() {
     e.preventDefault();
     try {
       const serializedSemesters = serializeSemesters(data);
-      await axios.put(
-        `https://672c26ca1600dda5a9f76967.mockapi.io/api/v1/Students/${id}`,
-        {
-          studentNumber,
-          password,
-          ...serializedSemesters,
-        }
-      );
+      await axios.put(`https://672c26ca1600dda5a9f76967.mockapi.io/api/v1/Students/` + id, { studentNumber, password, ...serializedSemesters, });
       alert('수정되었습니다.');
       navigate('/user/myInfo/'+id);
     } catch (error) {
@@ -114,40 +99,19 @@ export default function UpdateInfo() {
           <div className="row g-3">
             <div className="col-sm-6">
               <label htmlFor="studentNumber" className="form-label">학번</label>
-              <input
-                type="number"
-                className="form-control"
-                id="studentNumber"
-                value={studentNumber}
-                readOnly // 학번 수정 불가능
-              />
+              <input type="number" className="form-control" id="studentNumber" value={studentNumber} readOnly />
             </div>
 
             <div className="col-sm-6">
               <label htmlFor="password" className="form-label">비밀번호</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <input type="password" className="form-control" id="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
 
             <div className="accordion" id="semesterAccordion">
               {[1, 2, 3, 4].map((year) => (
                 <div className="accordion-item mb-3" key={year}>
                   <h2 className="accordion-header" id={`headingYear${year}`}>
-                    <button
-                      className="accordion-button"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target={`#collapseYear${year}`}
-                      aria-expanded="true"
-                      aria-controls={`collapseYear${year}`}
-                    >
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapseYear${year}`} aria-expanded="true" aria-controls={`collapseYear${year}`} >
                       {year}학년
                     </button>
                   </h2>
@@ -172,34 +136,10 @@ export default function UpdateInfo() {
                                 {data[year][semester].map((row, index) => (
                                   <tr key={index}>
                                     <td>
-                                      <input
-                                        className="form-control col-12"
-                                        value={row.subject}
-                                        onChange={(e) =>
-                                          handleInputChange(
-                                            year,
-                                            semester,
-                                            index,
-                                            'subject',
-                                            e.target.value
-                                          )
-                                        }
-                                      />
+                                      <input className="form-control col-12" value={row.subject} onChange={(e) => handleInputChange( year, semester, index, 'subject', e.target.value )} />
                                     </td>
                                     <td>
-                                      <input
-                                        className="form-control col-8"
-                                        value={row.grade}
-                                        onChange={(e) =>
-                                          handleInputChange(
-                                            year,
-                                            semester,
-                                            index,
-                                            'grade',
-                                            e.target.value
-                                          )
-                                        }
-                                      />
+                                      <input className="form-control col-8" value={row.grade} onChange={(e) => handleInputChange( year, semester, index, 'grade', e.target.value )} />
                                     </td>
                                   </tr>
                                 ))}
@@ -207,11 +147,7 @@ export default function UpdateInfo() {
                               <tfoot>
                                 <tr>
                                   <td colSpan="2" className="bg-light">
-                                    <button
-                                      type="button"
-                                      className="btn btn-link text-decoration-none"
-                                      onClick={() => handleAddRow(year, semester)}
-                                    >
+                                    <button type="button" className="btn btn-link text-decoration-none" onClick={() => handleAddRow(year, semester)}>
                                       추가
                                     </button>
                                   </td>
@@ -229,9 +165,7 @@ export default function UpdateInfo() {
 
             <hr className="my-4" />
 
-            <button className="w-100 btn btn-primary btn-lg" type="submit">
-              수정하기
-            </button>
+            <button className="w-100 btn btn-primary btn-lg" type="submit"> 수정하기 </button>
           </div>
         </form>
       </div>
