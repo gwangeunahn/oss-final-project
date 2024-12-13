@@ -9,7 +9,7 @@ export default function DeleteInfo() {
 
     useEffect(() => {
         const userDelete = async () => {
-          const isConfirmed = window.confirm('정말로 탈퇴하시겠습니까?');
+          const isConfirmed = window.confirm('정말로 탈퇴하시겠습니까? 탈퇴 시 해당 정보가 완전히 삭제됩니다.');
       
           if (isConfirmed) {
             try {
@@ -18,7 +18,7 @@ export default function DeleteInfo() {
               navigate('/');
             } catch (error) {
               console.error('Error:', error);
-              alert('오류가 발생했습니다.');
+              alert('죄송합니다. 잠시후 시도해주세요.');
             }
           } else {
             navigate('/user/myInfo/' + id);

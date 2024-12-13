@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './PagesCss/Graduation.css';
 
 export default function Graduation() {
   const [credits, setCredits] = useState({

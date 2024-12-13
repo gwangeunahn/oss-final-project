@@ -8,7 +8,7 @@ export default function MyInfo() {
   const navigate = useNavigate();
 
   const userDelete = async () => {
-    const isConfirmed = window.confirm("정말로 탈퇴하시겠습니까?");
+    const isConfirmed = window.confirm("정말로 탈퇴하시겠습니까? 탈퇴 시 해당 정보가 완전히 삭제됩니다.");
 
     if (isConfirmed) {
       try {
@@ -17,7 +17,7 @@ export default function MyInfo() {
         navigate("/");
       } catch (error) {
         console.error("Error:", error);
-        alert("오류가 발생했습니다.");
+        alert("죄송합니다. 잠시후 시도해주세요.");
       }
     }
   };
@@ -29,9 +29,7 @@ export default function MyInfo() {
     } else {
       const fetchData = async () => {
         try {
-          const response = await axios.get(
-            `https://672c26ca1600dda5a9f76967.mockapi.io/api/v1/Students/` + id
-          );
+          const response = await axios.get(`https://672c26ca1600dda5a9f76967.mockapi.io/api/v1/Students/` + id);
           setUserInfo(response.data);
         } catch (error) {
           console.error("Error:", error);
@@ -50,7 +48,6 @@ export default function MyInfo() {
   return (
     <div className="d-flex justify-content-center">
       <div className="col-md-7">
-      {/* 제목과 수정하기 버튼 */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3 className="mb-0">나의 정보</h3>
         <div>
