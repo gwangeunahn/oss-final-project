@@ -4,10 +4,10 @@ import ImgInfo from '../../Img/ImgInfo.jpg';
 export default function Info() {
   return (
     <div className='contaioner d-flex flex-wrap justify-content-center'>
-        <div className='banner img col-6'>
-            <img src={ImgInfo} alt="Service Info" />
+        <div className='banner col-lg-6 col-md-8 col-sm-10 mb-4'>
+            <img src={ImgInfo} alt="Service Info" className='img-fluid rounded'/>
         </div>
-        <div className='info col-6' style={{marginTop: "60px"}}>
+        <div className='info col-lg-6 col-md-8 col-sm-10' style={{marginTop: "60px"}}>
             <h3>WanJol(완졸)</h3>
             <p>
                 "<strong>완벽한 졸업</strong>"의 줄임말로, 한국어로 간결하면서도 신뢰감을 주는 졸업 지원 서비스입니다.
