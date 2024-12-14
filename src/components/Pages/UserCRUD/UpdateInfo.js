@@ -26,7 +26,7 @@ export default function UpdateInfo() {
         setPassword(password);
         setData(deserializeSemesters(semesters));
       } catch (error) {
-        console.error('Error:', error);
+        console.error('Student data Error:', error);
         alert('오류가 발생했습니다.');
       }
     };
@@ -86,8 +86,8 @@ export default function UpdateInfo() {
       alert('수정되었습니다.');
       navigate('/user/myInfo/'+id);
     } catch (error) {
-      console.error('Error:', error);
-      alert('오류가 발생했습니다.');
+      console.error('Update data Error:', error);
+      alert('죄송합니다. 잠시후 다시 시도해주세요.');
     }
   };
 

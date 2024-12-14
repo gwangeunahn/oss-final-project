@@ -14,9 +14,9 @@ export default function Graduation() {
     '전공': 0,
   });
 
-  const [selectedType, setSelectedType] = useState(null); // 클릭된 항목의 상세 정보 상태
-  const [classDetails, setClassDetails] = useState([]); // 선택된 항목에 대한 수업 정보
-  const { id } = useParams(); // URL에서 studentId 가져오기
+  const [selectedType, setSelectedType] = useState(null);
+  const [classDetails, setClassDetails] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     if (!id) {
@@ -24,7 +24,6 @@ export default function Graduation() {
         '신앙 및 세계관': 0,
         '인성 및 리더십': 0,
         '실무영어': 0,
-        '전문교양': 0,
         'BSM': 0,
         'ICT융합기초': 0,
         '자유선택': 0,
@@ -69,11 +68,11 @@ export default function Graduation() {
               setCredits(calculatedCredits);
             })
             .catch((error) => {
-              console.error('Error fetching class data:', error);
+              console.error("useEffect error : ", error);
             });
         })
         .catch((error) => {
-          console.error('Error fetching student data:', error);
+          console.error("useEffect error : ", error);
         });
     }
   }, [id]);
@@ -87,13 +86,13 @@ export default function Graduation() {
         setClassDetails(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching class details:', error);
+        console.error('class data get error:', error);
       });
   };
 
   return (
     <div className="container mt-5">
-      <div className="table-responsive col-10 mx-auto rounded-3">
+      <div className="graduationTable table-responsive col-10 mx-auto rounded-3">
         <table className="table table-bordered text-center">
           <thead className="bg-light">
             <tr>
@@ -108,11 +107,10 @@ export default function Graduation() {
               { type: '신앙 및 세계관', criteria: 9 },
               { type: '인성 및 리더십', criteria: 6 },
               { type: '실무영어', criteria: 9 },
-              { type: '전문교양', criteria: 5 },
-              { type: 'BSM', criteria: 10 },
+              { type: 'BSM', criteria: 18 },
               { type: 'ICT융합기초', criteria: 2 },
-              { type: '자유선택', criteria: 9 },
-              { type: '전공', criteria: 12 },
+              { type: '자유선택', criteria: 21 },
+              { type: '전공', criteria: 60 },
             ].map((category, index) => (
               <tr key={index}>
                 <td className="fw-bold">

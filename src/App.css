@@ -12,3 +12,28 @@
   background-color: #191970;
   color: #ffffff;
 }
+@media screen and (min-width: 450px){
+  #banner {
+    display: block;
+  }
+  #bannerMobile{
+    display : none;
+  }
+}
+@media screen and (max-width: 450px) {
+  .banner{
+    display : none;
+  }
+  .info{
+    width: 100%;
+  }
+  .gtable{
+    width: 100%;
+  }
+  #banner{
+    display : none;
+  }
+  #bannerMobile {
+    display: block;
+  }
+}

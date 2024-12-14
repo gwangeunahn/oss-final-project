@@ -30,7 +30,7 @@ export default function SearchJob() {
         setJobs(jobsArray);
         setFilteredJobs(jobsArray);
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => console.error("useEffect error :", error));
   }, []);
 
   useEffect(() => {
@@ -101,7 +101,22 @@ export default function SearchJob() {
               }}
             >
               <h2 style={{ margin: "0 0 10px" }}>{job.job}</h2>
-              <p><strong>요약:</strong> {job.summary}</p>
+              <p>
+                <strong>요약:</strong>
+                {job.summary.split("-").map((line, idx) => (
+                  <React.Fragment key={idx}>
+                    {idx === 0 ? (
+                      <>
+                        {line.trim()} <br />
+                      </>
+                    ) : (
+                      <>
+                        * {line.trim()} <br />
+                      </>
+                    )}
+                  </React.Fragment>
+                ))}
+              </p>
               <p><strong>유사 직업:</strong> {job.similarJob}</p>
               <p><strong>연봉:</strong> {job.salery}</p>
               <p><strong>고용 전망:</strong> {job.possibility}</p>
@@ -121,7 +136,7 @@ export default function SearchJob() {
           flexWrap: "wrap",
           justifyContent: "center",
           marginTop: "20px",
-          gap: "10px", // 버튼 간 간격
+          gap: "10px",
         }}
       >
         {Array.from({ length: totalPages }, (_, i) => (

@@ -21,6 +21,7 @@ export default function Signup() {
     }));
   };
 
+  // Inputhandler
   const handleInputChange = (year, semester, index, field, value) => {
     setData((prevData) => {
       const updatedSemester = [...prevData[year][semester]];
@@ -42,6 +43,7 @@ export default function Signup() {
     return result;
   };
 
+  // Post함수
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -50,7 +52,7 @@ export default function Signup() {
       alert('회원가입이 완료 되었습니다.');
       navigate('/login');
     } catch (error) {
-      console.error('Error:', error);
+      console.error('SignUp Error:', error);
       alert('죄송합니다. 잠시후 다시 시도해주세요.');
     }
   };
@@ -107,7 +109,6 @@ export default function Signup() {
                                   </tr>
                                 ))}
                               </tbody>
-                              {/* 추가입력 */}
                               <tfoot>
                                 <tr>
                                   <td colSpan="2" className="bg-light">

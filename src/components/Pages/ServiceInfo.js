@@ -4,7 +4,7 @@ import ImgInfo from '../../Img/ImgInfo.jpg';
 export default function Info() {
   return (
     <div className='contaioner d-flex flex-wrap justify-content-center'>
-        <div className='img col-6'>
+        <div className='banner img col-6'>
             <img src={ImgInfo} alt="Service Info" />
         </div>
         <div className='info col-6' style={{marginTop: "60px"}}>
